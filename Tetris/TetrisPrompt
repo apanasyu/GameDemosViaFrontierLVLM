@@ -1,0 +1,145 @@
+I want to design a game, I would like to do it using library pygame (I have everything setup for this already), I want to start in Pycharm Community edition using: if __name__ == "__main__": main()
+
+Description of game:
+
+### **Section 1: Core Gameplay Mechanics (The Foundation)**
+
+These are the non-negotiable elements that define the Tetris experience.
+
+1. **Tetriminos:** The seven classic geometric shapes, each composed of four blocks.
+  *  **I:** Straight line
+  *  **O:** Square
+  *  **T:** T-shape
+  *  **L:** L-shape
+  *  **J:** Reverse L-shape
+  *  **S:** S-shape
+  *  **Z:** Reverse S-shape
+  *  **Standardized Coloring:** A professional version should use the modern standard colors for instant recognition (e.g., I = Cyan, O = Yellow, T = Purple, etc.).
+
+2. **Playfield (The "Matrix" or "Well"):**
+  *  **Dimensions:** The standard is a 10x20 visible grid. The actual matrix is taller (e.g., 10x40) to allow pieces to spawn "off-screen" in the "vanish zone."
+  *  **Game Over Condition:** The game ends when a piece locks entirely within the vanish zone above the visible playfield (a "Block Out").
+
+3. **Basic Controls:**
+  *  **Move:** Left/Right.
+  *  **Rotate:** Clockwise (CW) and Counter-Clockwise (CCW).
+  *  **Soft Drop:** Increase the speed at which the piece falls (player-controlled).
+  *  **Hard Drop:** Instantly slam the piece to the bottom-most valid position. This is a mandatory feature for modern Tetris.
+
+4. **Line Clearing and Scoring:**
+  *  **Single:** Clearing 1 line.
+  *  **Double:** Clearing 2 lines simultaneously.
+  *  **Triple:** Clearing 3 lines simultaneously.
+  *  **Tetris:** Clearing 4 lines simultaneously (only possible with an I-piece). This should award a significant score bonus.
+  *  **Back-to-Back Bonus:** Award extra points for consecutive "difficult" clears (Tetrises or T-Spins) without an "easy" clear (Single, Double, Triple) in between.
+
+### **Section 2: Modern "Guideline" Features (The Professional Standard)**
+
+These features are expected in any competitive or polished Tetris title today.
+
+1. **Ghost Piece:** A wireframe or semi-transparent outline at the bottom of the well, showing where the active piece will land if hard-dropped. Essential for precision and speed.
+
+2. **Hold Queue:** Allows the player to "hold" the current piece for later use by swapping it with the piece already in the hold box. A piece can only be swapped once per drop; you cannot continuously swap back and forth.
+
+3. **Next Queue:** A display showing the next 3 to 6 upcoming pieces. This is critical for strategic planning.
+
+4. **Super Rotation System (SRS):** The modern standard for piece rotation.
+  *  **Wall Kicks:** Allows pieces to "kick" off walls or other locked pieces when rotated, enabling them to fit into seemingly impossible spots.
+  *  **T-Spins:** The most famous outcome of SRS. By rotating a T-piece into a T-shaped cavity, the player can perform a "T-Spin." Clearing lines with a T-Spin (Single, Double, or Triple) yields massive score/garbage bonuses and is a cornerstone of high-level play.
+
+5. **Lock Delay:** A brief moment (around 0.5 seconds) after a piece lands on a surface where the player can still move or rotate it before it locks into place.
+  *  **Infinity / Move Reset:** The lock delay timer should reset every time the piece is successfully moved or rotated, allowing for complex last-second adjustments.
+
+6. **7-Bag Randomizer:** Instead of pure randomness, pieces are generated in "bags" containing one of each of the seven Tetriminos. This ensures fairness by preventing long droughts of a specific piece (like the I-piece) and allows for more predictable short-term planning.
+
+### **Section 3: Game Modes (Content & Replayability)**
+
+A professional game needs more than one way to play.
+
+1. **Marathon:** The classic endurance mode. Clear a set number of lines (e.g., 150) to "win." The speed increases every 10 lines cleared. An endless variant can also be included.
+
+2. **Sprint (40 Lines):** A time attack mode. The goal is to clear 40 lines as fast as possible. This is a primary competitive benchmark.
+
+3. **Ultra (Score Attack):** A 2 or 3-minute mode where the goal is to achieve the highest possible score within the time limit. Encourages risky, high-scoring plays like T-Spins.
+
+4. **Versus (Multiplayer):** The core competitive experience.
+  *  **Garbage:** Clearing lines sends "garbage" lines to the opponent's playfield. These are gray, incomplete lines with a single gap that push their stack up. They are cleared by clearing a line directly above them.
+  *  **Attack Table:** A defined system for how much garbage each clear sends (e.g., Double sends 1 line, Triple sends 2, Tetris sends 4, T-Spin Double sends 4).
+  *  **Combos (or Rens):** Clearing lines with consecutive pieces sends additional garbage.
+  *  **Garbage Cancelling/Countering:** Incoming garbage can be reduced or sent back to the opponent by clearing lines on your own board.
+  *  **Online Matchmaking:** Should include both ranked (with an ELO/ranking system) and casual queues.
+  *  **Local Multiplayer:** Split-screen play for two players.
+
+5. **Zen / Chill Mode:** Infinite play with no Game Over. Speed doesn't increase. The focus is purely on flow state, relaxation, and atmosphere. Often paired with beautiful, evolving visuals and music.
+
+6. **Puzzle Mode:** A set of pre-designed challenges, such as "clear all blocks in 3 moves" or "survive a specific incoming attack pattern."
+
+### **Section 4: Graphic Design & Aesthetics (The "Wow" Factor)**
+
+This is what elevates a functional clone to a professional product.
+
+1. **Art Direction:** A strong, cohesive theme. Examples:
+  *  **Sleek & Minimalist:** Clean lines, flat design, a sophisticated color palette. (e.g., *TETR.IO*)
+  *  **Cosmic & Ethereal:** Nebulas, stars, abstract light forms. (e.g., *Tetris Effect*)
+  *  **Organic & Natural:** Water, forests, seasons changing.
+  *  **Retro & Nostalgic:** High-quality pixel art, CRT screen effects, 8-bit aesthetic.
+
+2. **The Playfield:** Should be visually clear but integrated into the theme.
+  *  A subtle, non-intrusive grid.
+  *  The background within the well should be dark enough to provide contrast for the colored pieces.
+
+3. **Tetrimino Design:**
+  *  Crisp, clean shapes. Can be flat 2D, have a subtle 3D bevel, or a glowing/particle effect.
+  *  The design should not compromise the immediate readability of the shape.
+  *  **Customization:** Allow players to choose from different block skins.
+
+4. **Dynamic Backgrounds & Environments:**
+  *  The background should not be static. It should react to gameplay.
+  *  **Level Transitions:** A major visual shift when the level increases.
+  *  **Gameplay Reactivity:** The environment pulses with line clears, shimmers during combos, and explodes with light and energy for a Tetris or T-Spin. The entire screen should feel alive.
+
+5. **Particle Effects & "Juice":** This is critical for player feedback and satisfaction.
+  *  **Line Clear:** A satisfying explosion, shattering effect, or wave of light. The effect should be more spectacular for a Tetris than a Single.
+  *  **Hard Drop:** A "poof" of particles and a slight screen shake to give it impact.
+  *  **Locking:** A subtle flash or pulse as the piece locks in.
+  *  **T-Spin:** A unique visual flourish, like a vortex or energy swirl around the T-piece as it locks.
+  *  **Game Over:** A dramatic and clear animation, like the screen cracking or blocks turning to stone and crumbling.
+
+### **Section 5: Audio Design**
+
+Sound is half of the experience.
+
+1. **Music:**
+  *  **Iconic Theme:** Must include a version of "Korobeiniki," but in multiple arrangements (orchestral, electronic, lo-fi, etc.) to fit different themes.
+  *  **Dynamic Soundtrack:** Music should build in layers and intensity as the game speeds up or as the player performs well. In Zen mode, it should be ambient and evolving. Each visual theme should have its own unique music track.
+
+2. **Sound Effects (SFX):** Every action needs satisfying audio feedback.
+  *  **Movement/Rotation:** Subtle, crisp clicks.
+  *  **Soft/Hard Drop:** A soft "thud" vs. a bass-heavy "THUMP."
+  *  **Lock Piece:** A distinct "clack" or "chime."
+  *  **Line Clears:** Differentiated sounds for Single, Double, Triple. The "Tetris" sound effect should be epic and rewarding.
+  *  **T-Spin:** A unique, almost magical sound.
+  *  **Menu Navigation:** Clean, responsive UI sounds.
+
+### **Section 6: UI/UX & Player Options**
+
+The connective tissue that makes the game usable and accessible.
+
+1. **Heads-Up Display (HUD):**
+  *  Clean, unobtrusive, and instantly readable.
+  *  Elements: Score, Level, Lines Cleared, Time (for Sprint/Ultra), Hold Queue, Next Queue, Garbage Meter (for Versus).
+  *  Font choice must be exceptionally clear.
+
+2. **Menus & Settings:**
+  *  **Full Control Customization:** Allow remapping of every single key/button.
+  *  **Handling/Tuning Options (Crucial for Pros):** Sliders or presets for:
+    *  **DAS (Delayed Auto Shift):** How long you must hold left/right before the piece starts moving automatically.
+    *  **ARR (Auto Repeat Rate):** How fast the piece moves once auto-shift kicks in.
+    *  **Soft Drop Speed (SDF):** How fast the piece moves during a soft drop.
+  *  **Graphics/Audio Options:** Separate volume sliders, options to reduce particle effects/background brightness for competitive focus.
+  *  **Accessibility:** Colorblind-friendly palettes, options to turn off distracting effects.
+
+3. **Post-Game Screen & Replays:**
+  *  **Detailed Statistics:** Score, Lines, Time, but also advanced metrics like Pieces Per Second (PPS), Attacks Per Minute (APM), and Finesse (a measure of how efficiently pieces were placed).
+  *  **Replay System:** The ability to save and watch replays of any game. Essential for learning and sharing impressive feats.
+  *  **Leaderboards:** Global and friend-based leaderboards for every relevant game mode.

@@ -1,0 +1,120 @@
+I want to design a game, I would like to do it using library pygame (I have everything setup for this already), I want to start in Pycharm Community edition using: if __name__ == "__main__": main()
+
+Game Design Document: Project Tetris Classic
+Version: 1.0
+Date: October 26, 2023
+1. Introduction & Game Overview
+1.1. Game Concept
+Project Tetris Classic is a single-player puzzle game based on the iconic original. The player's objective is to manipulate falling geometric shapes, called "Tetriminos," to form solid horizontal lines without any gaps. When a line is completed, it is cleared from the playfield, and the player earns points. The game ends when the stack of Tetriminos reaches the top of the playfield.
+1.2. Target Audience
+Casual gamers of all ages. The game is designed to be easy to learn but difficult to master.
+1.3. Core Loop
+A Tetrimino appears at the top of the playfield.
+The player moves and rotates the Tetrimino as it falls.
+The player drops the Tetrimino into a desired position at the bottom of the stack.
+If a horizontal line is completed, it is cleared, and the player earns points.
+The game speed increases as the player clears more lines (advances in level).
+The loop repeats until the "Game Over" condition is met.
+2. Core Gameplay Mechanics
+2.1. The Playfield (The "Matrix")
+Dimensions: The visible playfield will be 10 columns wide by 20 rows high.
+Buffer Zone: An additional 2-4 invisible rows will exist above the visible playfield where Tetriminos spawn.
+Grid-based: All movement and placement are based on this grid.
+2.2. The Tetriminos
+There are seven distinct Tetriminos, each composed of four square blocks.
+NameShapeColorIA straight line of four blocksCyanOA 2x2 squareYellowTA T-shapePurpleLAn L-shapeOrangeJA reverse L-shapeBlueSAn S-shapeGreenZA reverse S-shapeRed
+2.3. Tetrimino Generation
+Randomizer: A "7-Bag Randomizer" system will be used. This means all seven Tetriminos are placed in a virtual "bag." They are drawn one by one without replacement until the bag is empty. Then, the bag is refilled with all seven pieces, and the process repeats.
+Spawning: Tetriminos spawn in the center of the buffer zone at the top of the playfield.
+2.4. Player Controls & Movement
+Move Left/Right: Moves the active Tetrimino one grid unit horizontally. The piece cannot move through other blocks or outside the playfield walls.
+Rotate (Clockwise & Counter-Clockwise): Rotates the active Tetrimino 90 degrees around a defined pivot point.
+Wall Kick: If a rotation is blocked by the wall or another block, the game should attempt to "kick" the piece one unit left, right, or up to allow the rotation. (Implementation of the Super Rotation System (SRS) is standard).
+Soft Drop: Increases the falling speed of the Tetrimino while the key is pressed. The player earns minimal points for each row the piece soft drops.
+Hard Drop: Instantly drops the Tetrimino to the lowest possible position in its current column and locks it in place.
+Hold: The player can press the "Hold" key to swap the currently falling Tetrimino with the one in the "Hold" queue.
+This can only be done once per falling piece (i.e., you cannot spam Hold to keep a piece from falling).
+If the Hold queue is empty, the current piece moves to Hold, and the next piece from the "Next" queue becomes active.
+2.5. Locking Mechanism
+When a Tetrimino lands on the floor or on top of other blocks, it does not lock immediately.
+Lock Delay: A short timer (e.g., 0.5 seconds) begins. During this time, the player can still move or rotate the piece. This is known as "Infinity Placement."
+The lock delay timer resets if the piece is moved or rotated. It does not reset if the piece is simply falling.
+The piece locks permanently into the grid when the Lock Delay timer expires.
+2.6. Line Clearing
+When one or more horizontal lines are completely filled with blocks, those lines are cleared.
+Any blocks above the cleared lines fall down to fill the empty space.
+The game pauses briefly during the line clear animation.
+2.7. Game State
+Leveling: The game starts at Level 1. The level increases for every 10 lines cleared.
+Speed: The automatic downward "gravity" speed of Tetriminos increases with each level.
+Game Over: The game ends when a newly spawned Tetrimino cannot fit entirely within the spawn area because it is obstructed by already-locked blocks. This is a "Block Out."
+2.8. Scoring System
+Drops:
+Soft Drop: 1 point per row dropped.
+Hard Drop: 2 points per row dropped.
+Line Clears:
+Single (1 line): 100 points × Level
+Double (2 lines): 300 points × Level
+Triple (3 lines): 500 points × Level
+Tetris™ (4 lines): 800 points × Level
+Bonuses:
+Back-to-Back Tetris: Performing a second (or more) Tetris without any other line clears in between grants a bonus (e.g., 1200 points × Level).
+3. GUI (Graphical User Interface) Requirements
+3.1. Main Menu Screen
+Game Title: "Tetris Classic" prominently displayed.
+Menu Buttons:
+START GAME: Begins a new game.
+HIGH SCORES: Displays a list of top scores.
+SETTINGS: Opens the settings menu (controls, audio).
+QUIT: Exits the game application.
+3.2. In-Game HUD (Heads-Up Display)
+The main game screen will be divided into three primary sections.
+Left Panel:
+HOLD Queue: A box (approx. 4x4 grid units) displaying the Tetrimino currently in the hold queue. Labelled "HOLD."
+Center Panel:
+The Playfield: The main 10x20 game grid.
+Ghost Piece: A wireframe or semi-transparent outline of the active Tetrimino should be displayed at the bottom of the playfield, showing where the piece will land with a Hard Drop.
+Right Panel:
+NEXT Queue: A vertical display showing the next 3 to 5 upcoming Tetriminos. Labelled "NEXT."
+SCORE Display: The player's current score.
+LEVEL Display: The player's current level.
+LINES Display: The total number of lines cleared by the player.
+3.3. Pause Screen
+An overlay that appears when the game is paused.
+Text: "PAUSED"
+Buttons:
+RESUME: Unpauses the game.
+RESTART: Starts a new game immediately.
+QUIT TO MENU: Ends the current game and returns to the Main Menu.
+3.4. Game Over Screen
+An overlay that appears when the game ends.
+Text: "GAME OVER"
+Information Display:
+Final Score
+Final Level
+Total Lines Cleared
+High Score Entry: If the score is high enough, a text input field appears for the player to enter their 3-character initials.
+Buttons:
+PLAY AGAIN: Starts a new game.
+MAIN MENU: Returns to the Main Menu.
+3.5. Visual Style & Animations
+Aesthetic: Clean, modern, and minimalist. High contrast between the background and the colored Tetriminos.
+Animations:
+Line Clear: A bright flash or particle effect that quickly clears the line.
+Hard Drop: A particle "poof" or flash effect where the Ghost Piece was.
+Movement: Smooth, instantaneous block movement (no tweening between grid cells).
+4. Audio Requirements
+4.1. Sound Effects (SFX)
+Crisp, satisfying, and non-intrusive sound effects are required for key actions:
+Move (subtle blip)
+Rotate (short whoosh)
+Soft Drop (tick per row)
+Hard Drop (solid thud)
+Lock Piece (confirmation click)
+Line Clear (a positive, ascending sound)
+Tetris Clear (a more dramatic, rewarding sound effect)
+Level Up (a celebratory fanfare)
+Game Over (a descending, sadder tune)
+4.2. Music
+Background Music (BGM): An upbeat, looping electronic track inspired by the classic "Korobeiniki" theme.
+Dynamic Music: The tempo and/or intensity of the BGM should increase at higher levels (e.g., every 5 levels) to create a sense of urgency.

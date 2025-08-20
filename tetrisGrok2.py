@@ -524,7 +524,18 @@ class Game:
     def load_high_scores(self):
         if os.path.exists("high_scores.txt"):
             with open("high_scores.txt", "r") as f:
-                return [line.strip().split(":") for line in f.readlines()]
+                lines = f.readlines()
+                scores = []
+                for line in lines:
+                    parts = line.strip().split(":")
+                    if len(parts) == 2:
+                        name, score_str = parts
+                        try:
+                            score = int(score_str)
+                            scores.append((name, score))
+                        except ValueError:
+                            pass  # Skip invalid lines
+                return scores
         return [("AAA", 0)] * 5
 
     def save_high_scores(self):

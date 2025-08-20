@@ -63,11 +63,9 @@ The repository is organized by the game being tested. Each game has its own fold
 
 Here we will track the results of each test.
 
-| Game      | Model          | Code Link                               | Gameplay Video | Status & Notes                                           |
+| Game      | Models          | Code Link                               | Gameplay Video | Status & Notes                                           |
 | :-------- | :------------- | :-------------------------------------- | :------------- | :------------------------------------------------------- |
-| **Tetris**  | Gemini Pro 2.5 | [Link](./tetris/tetris_GeminiPro.py)    | [Watch](https://youtube.com/link) | `Fully Functional` - Game works as expected.             |
-| **Tetris**  | Grok 4         | [Link](./tetris/tetris_Grok4.py)        | [Watch](https://youtube.com/link) | `Minor Bugs` - Scoring system does not work correctly.   |
-| **Tetris**  | GPT-5          | [Link](./tetris/tetris_GPT5.py)         | [Watch](https://youtube.com/link) | `Crashes on Start` - Fails to initialize the game board. |
+| **Tetris**  | Gemini Pro 2.5, Grok 4, GPT-5 | [Link](./tetris/tetris_GeminiPro.py)    | [Watch](https://youtube.com/link) | `Fully Functional` - Game works as expected.             |
 | **Snake**   | ...            | ...                                     | ...            | ...                                                      |
 
 *(This table will be updated as new tests are completed.)*

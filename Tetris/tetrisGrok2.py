@@ -522,8 +522,8 @@ class Game:
         self.screen.blit(back, (SCREEN_WIDTH // 2 - back.get_width() // 2, 500))
 
     def load_high_scores(self):
-        if os.path.exists("high_scores.txt"):
-            with open("high_scores.txt", "r") as f:
+        if os.path.exists("../high_scores.txt"):
+            with open("../high_scores.txt", "r") as f:
                 lines = f.readlines()
                 scores = []
                 for line in lines:
@@ -539,7 +539,7 @@ class Game:
         return [("AAA", 0)] * 5
 
     def save_high_scores(self):
-        with open("high_scores.txt", "w") as f:
+        with open("../high_scores.txt", "w") as f:
             for name, score in self.high_scores:
                 f.write(f"{name}:{score}\n")
 

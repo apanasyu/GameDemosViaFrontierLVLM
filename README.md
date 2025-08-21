@@ -63,10 +63,19 @@ The repository is organized by the game being tested. Each game has its own fold
 
 Here we will track the results of each test.
 
-| Game      | Models          | Code Link                               | Gameplay Video | Status & Notes                                           |
-| :-------- | :------------- | :-------------------------------------- | :------------- | :------------------------------------------------------- |
-| **Tetris**  | Gemini Pro 2.5, Grok 4, GPT-5 | [Link](./Tetris/)    | [Watch](https://youtube.com/link) | GPT-5 only one to generate a `Fully Functional` Game that worked as expected for over 5 minutes.             |
-| **Snake**   | ...            | ...                                     | ...            | ...                                                      |
+| Game | Description | Models | Code Link | Gameplay Video | Status & Notes |
+| :-------- | :------------- | :--- | :--- | :--- | :--- |
+| **Tetris** | A classic puzzle game where players rotate and place falling geometric shapes, called Tetriminos, to create and clear solid horizontal lines. The game ends when the blocks stack up to the top of the screen. | Gemini Pro 2.5, Grok 4, GPT-5 | [Link](./Tetris/) | [Watch](https://youtube.com/link) | GPT-5 only one to generate a `Fully Functional` Game that worked as expected for over 5 minutes. |
+| **Asteroids** | A 2D vector-based space shooter where the player pilots a ship with momentum-based physics. The goal is to survive waves of asteroids by shooting them, which causes them to break into smaller, faster pieces in a wrap-around screen. | ... | [Link](./PyRoids/) | [Watch](https://youtube.com/link) | ... |
+| **Block Blast** | An endless puzzle game on an 8x8 grid. Players strategically place un-rotatable block shapes to clear full horizontal or vertical lines. The game ends when no more shapes can be placed. | ... | [Link](./BlockBlast/) | [Watch](https://youtube.com/link) | ... |
+| **Breakout** | A fast-paced arcade game where the player controls a paddle to bounce a ball and destroy a wall of bricks. Features different brick types and catchable power-ups like paddle extend and multi-ball. | ... | [Link](./PyBrick/) | [Watch](https://youtube.com/link) | ... |
+| **Donkey Kong** | A single-screen platformer where the player must climb a structure of girders and ladders to rescue a princess while avoiding barrels thrown by an ape, "Kong," at the top of the screen. | ... | [Link](./PyKong/) | [Watch](https://youtube.com/link) | ... |
+| **Frogger** | An action-puzzle game where the player guides a frog across a busy highway and a treacherous river, avoiding vehicles and hopping on moving logs and turtles to reach one of five homes before time runs out. | ... | [Link](./PyFrogger/) | [Watch](https://youtube.com/link) | ... |
+| **Memory Game** | A tile-based memory game where the player flips over pairs of face-down cards on a grid. The objective is to find all matching pairs. A non-matching pair is briefly shown before being flipped back. | ... | [Link](./PyMemo/) | [Watch](https://youtube.com/link) | ... |
+| **Pac Man** | A maze-based game where the player eats all pellets while being pursued by four ghosts with unique AI personalities. Eating power pellets allows the player to temporarily eat the ghosts for bonus points. | ... | [Link](./Py-Man/) | [Watch](https://youtube.com/link) | ... |
+| **Pong** | A 2D simulation of table tennis. Two players control paddles to deflect a ball. Points are scored when an opponent fails to return the ball. The gameplay is enhanced by randomly spawning power-ups. | ... | [Link](./PyPong/) | [Watch](https://youtube.com/link) | ... |
+| **Snake** | A classic arcade game where the player controls a growing snake on a grid. The objective is to eat food, which increases the snake's length and the score. The game ends if the snake collides with a wall or its own body. | ... | [Link](./PySnake/) | [Watch](https://youtube.com/link) | ... |
+| **Sokoban** | A tile-based puzzle game where the player pushes boxes onto designated storage locations within a maze. The game is turn-based and features an undo mechanic to reverse moves. | ... | [Link](./PySoko/) | [Watch](https://youtube.com/link) | ... |
 
 *(This table will be updated as new tests are completed.)*
 

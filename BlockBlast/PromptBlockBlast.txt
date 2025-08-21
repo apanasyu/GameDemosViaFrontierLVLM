@@ -1,0 +1,39 @@
+I want to design a game, I would like to do it using library pygame (I have everything setup for this already), I want to start in Pycharm Community edition using: if __name__ == "__main__": main()
+
+Description of game:
+1. Game Overview
+
+Game Title: Block Blast
+Genre: Endless Puzzle, Strategy
+Target Audience: Casual gamers, puzzle enthusiasts
+Concept: An endless score-chasing block puzzle game where players strategically place pieces on an 8x8 grid to clear lines and maximize their score. The core challenge lies in spatial management, as blocks cannot be rotated.
+2. Core Gameplay Loop
+
+Presentation: The player is presented with three different block shapes below the main grid.
+Placement: The player selects one shape and drags it onto a desired empty position on the 8x8 grid.
+Line Clear & Scoring: If placing the block completes one or more full horizontal or vertical lines, those lines are cleared from the grid. The player earns points for each cleared line.
+Replenishment: Once a block is placed, it is consumed, and a new set of three shapes is presented if the previous set is exhausted.
+Game End: The game ends when the player cannot place any of the three available block shapes onto the remaining empty squares of the grid. The final score is then recorded.
+3. Key Features
+
+8x8 Grid: A standard-sized grid provides a balanced playfield for strategic depth and accessibility.
+Static Blocks: Block pieces cannot be rotated, making foresight and planning critical to success.
+Combo System: Clearing multiple lines with a single block placement awards bonus points, encouraging advanced strategic plays.
+Endless Score-Chasing: The primary mode is an endless format where the objective is to achieve the highest possible score.
+High Score Tracking: The game saves the player's personal best score, providing a clear goal for replayability.
+Intuitive Controls: Simple and responsive drag-and-drop mechanics for seamless gameplay.
+4. UI/UX Design
+
+Main Game Screen:
+
+Layout: Portrait orientation. A large, central 8x8 grid is the main focus.
+HUD (Heads-Up Display):
+Top: Current Score and High Score are clearly displayed.
+Bottom: A dedicated tray holds the three available block shapes for the player to choose from.
+Visual Style: Clean, minimalist, and vibrant. Blocks are brightly colored and distinct against a neutral, non-distracting background grid.
+Player Feedback: Clear visual effects for line clears, combos (e.g., flashing lines, particle effects), and block placement. An "invalid move" visual indicator (e.g., red highlight) prevents illegal placements.
+Game Over Screen:
+
+A modal window appears upon game completion.
+Elements: Displays the "Final Score" and "Best Score."
+Calls to Action: Buttons to "Restart" the game or return to the "Main Menu." A potential prompt for a "Continue" via a rewarded ad.

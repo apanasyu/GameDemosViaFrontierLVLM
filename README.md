@@ -65,7 +65,7 @@ Here we will track the results of each test.
 
 | Game      | Models          | Code Link                               | Gameplay Video | Status & Notes                                           |
 | :-------- | :------------- | :-------------------------------------- | :------------- | :------------------------------------------------------- |
-| **Tetris**  | Gemini Pro 2.5, Grok 4, GPT-5 | [Link](./tetris/tetris_GeminiPro.py)    | [Watch](https://youtube.com/link) | `Fully Functional` - Game works as expected.             |
+| **Tetris**  | Gemini Pro 2.5, Grok 4, GPT-5 | [Link](./Tetris/)    | [Watch](https://youtube.com/link) | GPT-5 only one to generate a `Fully Functional` Game that worked as expected for over 5 minutes.             |
 | **Snake**   | ...            | ...                                     | ...            | ...                                                      |
 
 *(This table will be updated as new tests are completed.)*

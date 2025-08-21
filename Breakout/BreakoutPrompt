@@ -1,0 +1,82 @@
+I want to design a game, I would like to do it using library pygame (I have everything setup for this already), I want to start in Pycharm Community edition using: if __name__ == "__main__": main() I want a single python file as output.
+
+Description of game:
+PyBrick: Core Design & Technical Specification
+Version: 1.0
+
+1. Core Gameplay Loop
+PyBrick is a fast-paced arcade game. The player controls a paddle at the bottom of the screen, moving it horizontally to bounce a ball. The objective is to use the ball to destroy a wall of bricks at the top of the screen. The player has a limited number of lives (balls). Power-ups can be caught to enhance the paddle or ball. A level is cleared when all destructible bricks are gone.
+
+2. Game Rules & Logic
+The Paddle:
+Moves horizontally along the bottom of the play area.
+Cannot move off-screen.
+The Ball:
+Moves at a constant speed, defined by a velocity vector (vx, vy).
+Starts attached to the center of the paddle; the player launches it to begin play.
+Bouncing Logic (Key Feature):
+Walls: Reverses its horizontal (vx) or vertical (vy) velocity upon hitting the side or top walls.
+Paddle: Reverses its vertical velocity (vy). The horizontal velocity (vx) should be influenced by where the ball hits the paddle (e.g., hitting the edge of the paddle sends the ball out at a sharper angle).
+Bricks: Reverses its vertical or horizontal velocity depending on the side of impact. The brick is destroyed upon collision.
+The Bricks:
+Arranged in a grid formation at the top of the screen.
+Can have different properties:
+Standard Brick: Destroys in one hit, awards points.
+Hardened Brick: Requires multiple hits to destroy (visually cracks).
+Indestructible Brick: Cannot be destroyed.
+Power-ups (Arkanoid Feature):
+Have a chance to spawn when a brick is destroyed, falling straight down.
+Player must catch the power-up with the paddle to activate it.
+Examples: Extend Paddle, Multi-Ball (spawns two extra balls), Sticky Paddle (catches the ball), Slow Ball.
+Lives & Scoring:
+Player starts with 3 lives.
+A life is lost if the ball hits the bottom of the screen (the "death zone"). The paddle and ball then reset to the "ready" state.
+Points are awarded for each brick destroyed.
+3. Controls
+Movement: Arrow Keys (Left/Right), A/D, or Mouse Movement (recommended).
+Launch Ball: Spacebar or Left Mouse Click.
+Pause: P.
+Restart Level: R.
+Quit Game: Escape.
+4. Game States & Flow
+Main Menu → Level Start (Ready) → Gameplay looping until → Level Complete or Game Over
+
+Main Menu: Shows title and "Click to Start".
+Ready State: The initial state for each life. The ball is stuck to the paddle, awaiting launch by the player.
+Gameplay: The active state where the ball is in motion.
+Level Complete: Triggered when all destructible bricks are cleared. Displays score, and a "Next Level" prompt.
+Game Over: Triggered when lives reach zero. Displays final score and a "Play Again" prompt.
+5. UI & Visuals
+Aesthetic: Clean, bright, vector-based visuals with a retro sci-fi feel.
+Game Feel (Key Focus):
+Impact: Use particle effects and a "flash" when the ball hits a brick.
+Sound: Critical for feedback. Sounds for bouncing, brick breaking, power-up collection, and losing a life.
+Elements:
+Paddle/Bricks: pygame.draw.rect().
+Ball: pygame.draw.circle().
+Power-ups: Render as simple icons or colored, lettered capsules (e.g., 'L' for Laser, 'E' for Extend).
+HUD:
+Display key information in a dedicated area outside the playfield (e.g., bottom or top bar).
+Score: "SCORE: [value]"
+Lives: Display as icons (e.g., small paddle sprites).
+Level: "LEVEL: [value]"
+6. Pygame Technical Specifications
+Display: Fixed size, e.g., 800 x 600.
+Game Loop: Real-time loop running at a fixed FPS (e.g., 60). All movement calculations should use delta time to ensure frame-rate independence.
+Collision Detection (Core Technical Challenge):
+Use pygame.Rect for the paddle, ball, bricks, and power-ups.
+Use Rect.colliderect() for initial collision checks.
+Bounce Direction Logic: After a collision is detected between the ball and a brick, determine if it was a vertical or horizontal impact to correctly reverse vx or vy. A simple method is to check the position of the ball's center relative to the brick's center.
+Level Design:
+Levels should be defined in external files (.txt or .json).
+A simple text file format using characters for different brick types is efficient:
+1: Standard Brick (color 1)
+2: Standard Brick (color 2)
+H: Hardened Brick
+X: Indestructible Brick
+: Empty Space
+Data Structures:
+A list of Rect objects (or custom Brick objects containing a Rect) for the level layout.
+A Rect for the paddle.
+A list of Ball objects (to support Multi-Ball), each with a Rect and a velocity vector (vx, vy).
+A list of active power-up objects on screen.

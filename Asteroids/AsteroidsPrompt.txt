@@ -1,0 +1,70 @@
+I want to design a game, I would like to do it using library pygame (I have everything setup for this already), I want to start in Pycharm Community edition using: if __name__ == "__main__": main() I want a single python file as output.
+
+Description of game:
+PyRoids: Core Design & Technical Specification
+Version: 1.0
+
+1. Core Gameplay Loop
+PyRoids is a 2D space shooter with physics-based movement. The player pilots a spaceship in a wrap-around asteroid field. The objective is to survive by shooting and destroying asteroids, which break into smaller, faster pieces. The game is wave-based, with difficulty increasing as the player clears the screen of all asteroids. The primary goal is to achieve a high score.
+
+2. Game Rules & Logic
+Player Ship:
+Movement: Controlled by rotation and thrust. It is not direct. The ship retains momentum.
+Rotation: Changes the ship's heading.
+Thrust: Applies acceleration in the direction the ship is facing.
+Respawn: After being destroyed, the ship respawns in the center of the screen after a short delay and is granted a few seconds of invulnerability (indicated by flashing).
+Asteroids:
+Move at a constant velocity, set randomly when they are created.
+Breakdown Mechanic:
+Large Asteroid → 2 Medium Asteroids + 20 pts
+Medium Asteroid → 2 Small Asteroids + 50 pts
+Small Asteroid → Destroyed + 100 pts
+The smaller pieces fly off in different directions from the point of impact.
+Screen Wrap: A fundamental rule. Any object (ship, asteroid, bullet) that exits one edge of the screen instantly reappears on the opposite edge with the same velocity.
+Collision Logic:
+Bullet + Asteroid: The bullet is destroyed. The asteroid breaks down or is destroyed (see above). Player scores points.
+Ship + Asteroid: The ship is destroyed. Player loses one life. The asteroid also breaks down as if it were shot.
+Lives & Scoring:
+Player starts with 3 lives.
+An extra life is awarded at 10,000 points.
+3. Controls
+Rotate Left / Right: Left Arrow / Right Arrow or A / D
+Thrust (Forward): Up Arrow or W
+Shoot: Spacebar
+Hyperspace (Optional): Shift. A high-risk "panic button" that teleports the ship to a random location. There's a small chance of self-destructing upon arrival.
+4. Game States & Flow
+Main Menu → Gameplay (Wave-based) → Game Over
+
+Main Menu: Displays title, high score, and "Press Enter to Start".
+Gameplay: The main game state.
+Wave Start: A new wave begins with a set number of large asteroids spawning at the screen edges.
+Wave Clear: Once all asteroids are destroyed, the game briefly pauses, then starts the next wave with N+1 large asteroids (where N is the previous wave's count).
+Player Death: A sub-state within gameplay. The ship explodes, a life is deducted, and the respawn sequence is initiated.
+Game Over: Triggered when the player loses their last life. The screen freezes, displays "GAME OVER" and the final score, and prompts for restart.
+5. UI & Visuals
+Aesthetic: Minimalist, retro vector graphics. Think wireframes on a black void.
+Graphics: All objects should be drawn using vertices and lines (pygame.draw.polygon or pygame.draw.lines with closed=True), not sprites, to maintain the classic look.
+Ship: A simple triangle.
+Asteroids: Irregular, convex polygons.
+Bullets: Small circles or dots.
+Color Palette: Monochromatic. White or light green objects on a pure black background.
+HUD: Minimalist text rendered at the top of the screen.
+Top Left: Current Score
+Top Center: High Score
+Top Right: Icons representing remaining lives (small ship shapes).
+Effects:
+Thruster: A smaller flame-shaped polygon drawn at the back of the ship when thrust is active.
+Explosions: A simple particle effect of expanding lines or dots radiating from the point of impact.
+6. Pygame Technical Specifications
+Display:
+Window Size: Fixed resolution, e.g., 1024 x 768.
+Game Loop & Physics (Key Challenge):
+The loop must be framerate-dependent to handle smooth physics. Use pygame.time.Clock and a delta time (dt) variable for all movement calculations.
+Vectors are Essential: Use pygame.math.Vector2 for managing position, velocity, and acceleration. This simplifies rotation, thrust, and movement updates (position += velocity * dt).
+Collision Detection:
+This is not grid-based. Circle-based collision is the most effective method.
+Each object (ship, asteroid) needs a center point (its position Vector2) and a radius. A collision occurs if the distance between two objects' centers is less than the sum of their radii.
+Object Management:
+The number of objects on screen is highly dynamic. Strongly recommend using Pygame's Sprite and Group classes.
+Create Sprite sub-classes for Player, Asteroid, and Bullet.
+Use Groups to manage all active asteroids and all active bullets, which simplifies updating and drawing all objects with a single command. Pygame's built-in spritecollide functions will handle the collision checks efficiently.

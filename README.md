@@ -76,6 +76,8 @@ Here we will track the results of each test.
 | **Pong** | A 2D simulation of table tennis. Two players control paddles to deflect a ball. Points are scored when an opponent fails to return the ball. The gameplay is enhanced by randomly spawning power-ups. | ... | [Link](./PyPong/) | [Watch](https://youtube.com/link) | ... |
 | **Snake** | A classic arcade game where the player controls a growing snake on a grid. The objective is to eat food, which increases the snake's length and the score. The game ends if the snake collides with a wall or its own body. | ... | [Link](./PySnake/) | [Watch](https://youtube.com/link) | ... |
 | **Sokoban** | A tile-based puzzle game where the player pushes boxes onto designated storage locations within a maze. The game is turn-based and features an undo mechanic to reverse moves. | ... | [Link](./PySoko/) | [Watch](https://youtube.com/link) | ... |
+| **Tank Duel** | A top-down 2D arena shooter where the player's tank faces one or more AI tanks in a maze of destructible blocks. Gameplay is based on one-shot kills, using cover to gain line-of-sight for the winning shot. Levels automatically advance, doubling the number of enemies each round. | ... | [Link](./TankDuel/) | [Watch](https://youtube.com/link) | ... |
+| **Space Invaders** | The player controls a laser cannon to defend against a descending swarm of aliens. Aliens move in formation, dropping lower and speeding up as they are destroyed. The player uses destructible shields for cover and can shoot a bonus UFO. | ... | [Link](./SpaceInvaders/) | [Watch](https://youtube.com/link) | ... |
 
 *(This table will be updated as new tests are completed.)*
 

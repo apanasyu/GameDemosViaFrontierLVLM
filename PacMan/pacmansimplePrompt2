@@ -1,0 +1,1 @@
+Design pacman classic game in Python using pygame library, I would like to start it using: if __name__ == "__main__": main() I want a single python file as output.
